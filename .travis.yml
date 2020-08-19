@@ -5,3 +5,12 @@ services:
 script:
     - docker build -t snakeeyezz/node .
     - docker images snakeeyezz/node
+
+before deploy:
+    - docker login -u snakeeyezz -p Nvrsaydie#
+
+deploy:
+    provider: script
+    script: docker push snakeeyezz/node
+    on:
+        branch: master
